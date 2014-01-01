@@ -1,0 +1,130 @@
+.about-me {
+	
+	.content {
+
+		.left {
+			width: 66%;
+			padding: 0px 4% 0px 0px;
+			float: left;
+			background-image: url("@{imageLocation}/bgs/gray-dot-border.png");
+			background-repeat: repeat-y;
+			background-position: top right;
+			font-size: 110%;
+
+			p.intro {
+				font-size: 150%;
+				padding: 0px 0px 10px 0px;
+			}
+		} //.left
+
+		.right {
+			width: 27%;
+			padding: 0px 0px 0px 3%;
+			float: right;
+
+			.gray {
+				font-size: 120%;
+				color: #333333;
+				letter-spacing: 1px;
+			}
+
+			.resume {
+				font-size: 180%;
+				font-weight: bold;
+				letter-spacing: 1px;
+			}
+
+			.sidebox {
+				background-image: url("@{imageLocation}/bgs/gray-dot-border-horz.png");
+				background-repeat: repeat-x;
+				background-position: top left;
+				padding: 10px 0px;
+				margin: 10px 0px 0px 0px;
+				width: 100%;
+				font-size: 90%;
+				line-height: 180%;
+
+				h4 {
+					padding: 0px;
+					margin: 0px 0px 10px 0px;
+					font-size: 190%;
+					text-transform: lowercase;
+					color: #404040;
+				}
+
+				p { padding: 0px 0px 0px 0px; margin: 0px; }
+			}
+
+		} //.right
+
+	} //.content
+
+} //.about-me
+
+@media (min-width: 1450px) {
+
+	.about-me {
+	
+		.content {
+
+			.left {
+				p.intro { padding: 0px 0px 20px 0px; }
+			} //.left
+
+			.right {
+				.sidebox {
+					h4 { margin: 0px 0px 12px 0px; }
+				}
+
+			} //.right
+
+		} //.content
+
+	} //.about-me
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	.about-me {
+	
+		.content {
+
+			.left { font-size: 140%; }
+
+			.right {
+
+				.sidebox {
+					font-size: 110%;
+					line-height: 180%;
+				}
+			}
+
+		} //.content
+
+	} //.about-me
+
+}
+
+@media (max-width: 767px) {
+
+	.about-me {
+		.content {
+
+			.left {
+				font-size: 140%;
+				.mobile-col;
+			}
+
+			.right {
+				.mobile-col;
+
+				.sidebox {
+					font-size: 130%;
+					line-height: 180%;
+				}
+			}
+		}
+	}
+
+}

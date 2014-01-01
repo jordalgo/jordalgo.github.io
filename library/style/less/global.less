@@ -1,0 +1,148 @@
+//Font for signature
+@font-face {
+    font-family: 'monikaitalic';
+    src: url('../../fonts/monika-webfont.eot');
+    src: url('../../fonts/monika-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/monika-webfont.woff') format('woff'),
+         url('../../fonts/monika-webfont.ttf') format('truetype'),
+         url('../../fonts/monika-webfont.svg#monikaitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html { 
+	font-size: 100%;
+	font-family: 'Alegreya', Georgia, "Times New Roman", Times, serif;
+	height: 100%;
+}
+
+body { 
+	color: #0a1517;
+	background-color: #fff; 
+	background-image: url("@{imageLocation}/bgs/texture1.jpg"); 
+	background-repeat: repeat; 
+	height: 100%;
+	.zeroed;
+}
+
+.yes-js { opacity: 0; }
+
+a { 
+	color: @linkColor;
+	text-decoration: none;
+	.zeroed; 
+}
+
+a:visited { color: #943303; }
+a:hover { background-color: @linkColor; color: #fff; outline: 0; } 
+a:active { outline: 0; }
+
+span.orange { color: @linkColor; }
+
+h1 { 
+	font-size: 1.6em;
+}
+
+h3 { 
+	font-size: 500%;
+	color: #000000;
+	text-transform: lowercase;
+	opacity: 0.2;
+	font-weight: 900;
+	margin: 0px 0px 2% 0px;
+	padding: 0px;
+}
+
+h6 {
+	color: #ee5408;
+	opacity: 0.9;
+	font-size: 220%;
+	line-height: 140%;
+	font-weight: 500;
+	margin: 0px 0px 16px 0px;
+	padding: 0px;
+}
+
+.container {
+	width: 100%;
+	background-image: url("@{imageLocation}/bgs/texture1.jpg"); 
+	background-repeat: repeat;
+	background-color: #FFFFFF;
+	z-index: 50;
+	position: relative;
+
+	.content {
+		width: 80%;
+		overflow: auto;
+		margin: 0 auto;
+		padding: 42px 0px 200px 0px;
+	}
+}
+
+.to-top {
+	display: none;
+	font-size: 140%;
+	font-weight: 900;
+	float: right;
+}
+
+/*
+Screen Readers
+*/
+
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.assistive-text:active,
+.assistive-text:focus {
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	color: #f15a29;
+	clip: auto !important;
+	font-size: 12px;
+	position: absolute;
+	text-decoration: underline;
+	top: 0;
+	left: 7.6%;
+}
+
+@media (min-width: 1450px) {
+
+	html { font-size: 125%; }
+
+	h6 { margin: 0px 0px 24px 0px; }
+
+	.container {
+
+		.content { padding: 40px 0px 180px 0px; }
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	html { font-size: 78%; }
+
+}
+
+@media (max-width: 767px) {
+
+	html { font-size: 72%; }
+
+	h3 { line-height: 100%; margin-bottom: 10%; }
+
+	.container {
+
+		.content {
+			width: 90%;
+			margin: 0px auto;
+			padding: 20px 0px 20px 0px;
+		}
+	}
+
+	.to-top { display: block; }
+
+}

@@ -1,0 +1,44 @@
+/*Variables*/
+
+@linkColor: #ee5408; //orange
+@imageLocation: ~"../../images";
+
+/*Mixins*/
+
+.zeroed {
+	  margin:0px;
+  	padding: 0px;
+  	border: 0px;
+  	border-collapse: collapse;
+}
+
+.shadow (@h: 0px, @v: 0px, @b: 10px, @s: 0px, @color: #000000) {
+      -moz-box-shadow: @h @v @b @s @color;
+   -webkit-box-shadow: @h @v @b @s @color;
+           box-shadow: @h @v @b @s @color;
+}
+
+.full {
+	width: 100%;
+	height: auto;
+}
+
+.bg-rgbo (@red: 255, @green: 255, @blue: 255, @opacity: 0.6) {
+  background-color: rgba(@red, @green, @blue, @opacity);
+  background: rgba(@red, @green, @blue, @opacity);
+}
+
+.mobile-col {
+	width: 100%;
+	padding: 0px;
+	float: none;
+	background-image: none;
+}
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -o-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}

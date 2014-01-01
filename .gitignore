@@ -1,0 +1,8 @@
+.DS_Store
+#psds
+library/images/psds/
+#archive
+library/archive/
+*.sublime-*
+node_modules/
+npm-debug.log

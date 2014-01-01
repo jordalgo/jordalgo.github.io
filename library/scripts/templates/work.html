@@ -1,0 +1,15 @@
+<div class="work-site">
+	<div class="site-image" id="<%= site.name %>">
+		<img src="<%= site.image %>" class="img-swap" />
+	</div>
+	<div class="site-info" id="<%= site.name %>">
+		<h6><%= site.name %></h6>
+		<%= site.details %>
+		<% if (site.designer) { %>
+			<p>Designed by <a href="<%= site.designer.site %>"><%= site.designer.name %></a></p>
+		<% } %>
+		<% if (site.link) { %>
+			<p><a href="<%= site.link.url %>" title="<%= site.link.name %>"><%= site.link.text %></a></p>
+		<% } %>
+	</div>
+</div>

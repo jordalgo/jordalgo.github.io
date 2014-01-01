@@ -1,0 +1,146 @@
+.work {
+	background-image: url("@{imageLocation}/bgs/texture-dark1.jpg");
+	background-color: #1e1e1e;
+
+	.content {
+
+		h3 {
+			color: #fff;
+			opacity: 0.5;
+			margin-bottom: 20px;
+		}
+
+		.work-site {
+			width: 100%;
+			overflow: auto;
+			border-bottom: 1px dotted #fff;
+			padding: 0px 0px 60px 0px;
+			margin: 0px 0px 60px 0px;
+
+			.site-image {
+				width: 47%;
+				height: auto;
+				float: left;
+				margin: 0px 0px 0px 0px;
+				border: 1px solid #ccc;
+				position: relative;
+
+				img { .full; }
+
+				.caption-container { 
+					display: none;
+					position: absolute;
+					bottom: 0px;
+					left: 0px;
+					width: 100%;
+					height: auto;
+					padding: 10px 0px 0px 0px;
+					font-size: 12pt;
+					color: #fff;
+					.bg-rgbo(0,0,0,0.9); 
+
+					h6 {
+						color: #fff;
+						font-size: 14pt;
+						margin: 0px 0px 0px 3%;
+						padding: 0px;
+						font-weight: normal;
+					}
+
+					a { font-size: 17pt; color: #fff; }
+					a:hover { background-color: transparent; text-decoration: underline; }
+
+				} //.caption-container
+			}
+
+			// .controls {
+			// 	color: @linkColor;
+			// 	float: right;
+			// 	font-size: 16pt;
+			// 	margin: 0px 2% 0px 0px;
+			// }
+
+			.site-left:hover {
+
+				.caption-container { 
+					display: block;
+				}
+			}
+
+			.site-info {
+				width: 47%;
+				height: auto;
+				float: right;
+				position: relative;
+				color: #fff;
+			}
+
+		} //.work-site
+
+		#more-work {
+			opacity: 0.7;
+			font-size: 350%;
+			font-weight: 900;
+			letter-spacing: 1px;
+			text-transform: lowercase;
+			display: block;
+			padding: 0px;
+		}
+
+		#more-work:hover { color: #fff; background-color: transparent; }
+
+	} // .content
+
+} // .work
+
+
+.no-js {
+
+	.work {
+		.content {
+			#more-work { display: none; }
+		} // .content
+	} // .work
+
+} //.no-js
+
+@media (min-width: 1450px) {
+
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	.work {
+		.content {
+			.work-site {
+				.site-info { font-size: 110%; }
+			}
+		}
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	.work {
+		.content {
+			.work-site {
+				padding: 0px 0px 30px 0px;
+				margin: 0px 0px 30px 0px;
+
+				.site-image,
+				.site-info { 
+					font-size: 120%;
+					.mobile-col; 
+				}
+
+				.site-image {
+					margin: 0px 0px 30px 0px;
+					border: 0px;
+				}
+			}
+		}
+	}
+
+}
