@@ -50,10 +50,10 @@ define([
             if (val === '') { $(this).val(defaultVal); }
         });
 
-        $("#send-button").click(function(e) {
-            e.preventDefault();
-            return validateForm();
-        });
+        // $("#send-button").click(function(e) {
+        //     e.preventDefault();
+        //     return validateForm();
+        // });
 
         $("#more-work").click(function() { 
             loadMoreWork($('.work-site-container'));
