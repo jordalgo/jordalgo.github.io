@@ -1,4 +1,7 @@
 module.exports = {
+    options: {
+      livereload: true, //default port 35729
+    },
     main: {
         files: [
             'library/scripts/**/*.js',
