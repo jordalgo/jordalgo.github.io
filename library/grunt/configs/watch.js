@@ -21,8 +21,8 @@ module.exports = {
         tasks: ['less']
     },
     html: {
-        files: ['library/html/index.html'],
-        tasks: ['replace']
+        files: ['library/html/**/*.html'],
+        tasks: ['replace:test']
     },
     jst: {
         files: ['library/scripts/templates/*.html'],
