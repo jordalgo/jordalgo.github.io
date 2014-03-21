@@ -8,9 +8,7 @@ module.exports = function(grunt) {
     //Automatically load grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    grunt.registerTask('default', ['replace:test', 'watch']);
-    grunt.registerTask('dev', ['replace:test', 'watch']);
-    //used exec:watchNtest when ready to roll Karma in
-    grunt.registerTask('prod', ['jshint', 'jst', 'less', 'requirejs', 'replace:build']);
+    // Load our custom grunt tasks.
+    grunt.loadTasks('./library/grunt/tasks');
 
 };

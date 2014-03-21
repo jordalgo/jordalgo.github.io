@@ -2,19 +2,23 @@ module.exports = {
     options: {
       livereload: true, //default port 35729
     },
-    main: {
+    javascript: {
         files: [
             'library/scripts/**/*.js',
-            'library/scripts/tests/**/*.js',
-            '!library/scripts/vendor/*.js'
+            '!library/scripts/vendor/*.js',
+            '!library/scripts/templates/*.js',
+            '!library/scripts/build/*.js'
         ],
         tasks: [
             'jshint:main',
-            'karma:main:run',
-            'requirejs:main'
+            'browserify:dev'
         ]
     },
-    less: {
+    templates: {
+        files: ['library/scripts/templates/*.hbs'],
+        tasks: ['handlebars']
+    },
+    style: {
         files: [
             'library/style/**/*.less'
         ],
@@ -23,13 +27,5 @@ module.exports = {
     html: {
         files: ['library/html/**/*.html'],
         tasks: ['replace:test']
-    },
-    jst: {
-        files: ['library/scripts/templates/*.html'],
-        tasks: ['jst']
-    },
-    version: {
-        files: ['package.json'],
-        tasks: ['less', 'requirejs:main']
     }
 };

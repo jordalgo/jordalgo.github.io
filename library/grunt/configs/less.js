@@ -11,7 +11,7 @@ module.exports = {
                 cwd: 'library/style/less',
                 src: 'style.less',
                 dest: 'library/style/css',
-                ext: '-<%= pkg.version %>.css'
+                ext: '.css'
             }
         ]
     }

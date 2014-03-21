@@ -1,35 +1,24 @@
-define([
-    'jQuery',
-    'lodash',
-    'modules/work',
-    'templates/compiled',
-    'modules/highlight-nav'
-], function(
-    $,
-    _,
-    workCollection,
-    templates,
-    highlightNav
-) {
+var WORK_DATA = require('../data/work');
+var Handlebars = require('handlebars/runtime').default;
+var TEMPLATES = require('../templates/work')(Handlebars);
+var WORK_TEMPLATE = TEMPLATES['library/scripts/templates/work.hbs'];
+var highlightNav = require('./highlight-nav');
 
-    var WORK_TEMPLATE = templates['library/scripts/templates/work.html'];
+function loadWork(el){
 
-    var loadMoreWork = function(el) {
+  var w = 0,
+    max = WORK_DATA.length,
+    workSet = '';
 
-        var workSet = '';
+  for (; w < max; w++) {
+    workSet += WORK_TEMPLATE({site: WORK_DATA[w]});
+  }
 
-        for (var w=0; w < workCollection.length; w++) {
-            workSet += WORK_TEMPLATE({site: workCollection[w]});
-        }
+  el.innerHTML = workSet; //add the work
+  document.querySelector('#more-work').remove();
 
-        el.append(workSet);
+  highlightNav.reCalculateHeights();
 
-        $("#more-work").unbind("click");
-        $("#more-work").remove();
+}
 
-        highlightNav.reCalculateHeights();
-    };
-
-    return loadMoreWork;
-
-});
+module.exports = loadWork;

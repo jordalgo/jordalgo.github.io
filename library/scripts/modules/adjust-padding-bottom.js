@@ -1,13 +1,11 @@
-define(['jQuery'], function($) {
+var $ = require('jQuery');
 
-    var adjustPaddingBottom = function(el) {
-        
-        var WINDOW_HEIGHT = window.innerHeight;
+var adjustPaddingBottom = function(el) {
+    
+    var WINDOW_HEIGHT = window.innerHeight;
 
-        if (WINDOW_HEIGHT > el.height()) el.css({"padding-bottom" : WINDOW_HEIGHT - el.height()});
-            
-    };
+    if (WINDOW_HEIGHT > el.offsetHeight) el.style.paddingBottom = WINDOW_HEIGHT - el.offsetHeight + "px";
+    
+};
 
-    return adjustPaddingBottom;
-
-});
+module.exports = adjustPaddingBottom;

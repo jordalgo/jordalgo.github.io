@@ -1,4 +1,3 @@
-var version = '<%= pkg.version %>';
 var fragmentBase = '<%= grunt.file.read("library/html/fragments/';
 var aboutmeFragment = fragmentBase + 'aboutme.html") %>';
 var workFragment = fragmentBase + 'work.html") %>';
@@ -15,7 +14,7 @@ var files = [
     ];
 
 module.exports = {
-    test: {
+    dev: {
         options: {
             variables: {
                 'nav': navFragment,
@@ -23,13 +22,12 @@ module.exports = {
                 'aboutme': aboutmeFragment,
                 'work': workFragment,
                 'contact': contactFragment,
-                'livereload': '<script src="http://localhost:35729/livereload.js"></script>',
-                'version': version
+                'livereload': '<script src="http://localhost:35729/livereload.js"></script>'
             }
         },
         files: files
     },
-    build: {
+    prod: {
         options: {
             variables: {
                 'nav': navFragment,
@@ -37,8 +35,7 @@ module.exports = {
                 'aboutme': aboutmeFragment,
                 'work': workFragment,
                 'contact': contactFragment,
-                'livereload': '',
-                'version': version
+                'livereload': ''
             }
         },
         files: files
