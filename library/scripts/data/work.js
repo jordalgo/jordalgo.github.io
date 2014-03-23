@@ -73,11 +73,11 @@ module.exports = [
     "description" : "This is the older version of this website that suited me well for years and was one of the first responsive websites I've ever built, incorporating a lot of jQuery functionality, mobile sniffing, SEO optimization and semantic markup. Built in PHP, I learned a lot about accesibility and grace degradation with this site. R.I.P."
   },
   {
-    "name" : "Perlow &amp; Rome (wedding website)", 
+    "name" : "Perlow & Rome (wedding website)", 
     "image" : "library/images/work/perlowandrome1.jpg",
     "description": "I designed and built this website for my wedding in May 2011. My wife told me she liked it at the time :) This was to supplement the invitation and give people (a lot of Californians) ideas about what to do in New York and where to stay. There was also a cute javascript photo gallery.",
     "link" : {
-      "url" : "http://www.jordanrome.com/archive/oldwebsites/perlowandrome/index.html",
+      "url" : "library/site-archive/perlow-and-rome/index.html",
       "text" : "site archive"
     }
   },

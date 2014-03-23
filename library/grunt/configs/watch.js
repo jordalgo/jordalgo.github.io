@@ -10,7 +10,16 @@ module.exports = {
             '!library/scripts/build/*.js'
         ],
         tasks: [
-            'jshint:main',
+            'jshint:main'
+        ]
+    },
+    browserify: {
+        files: [
+            'library/scripts/**/*.js',
+            '!library/scripts/vendor/*.js',
+            '!library/scripts/build/*.js'
+        ],
+        tasks: [
             'browserify:dev'
         ]
     },
@@ -26,6 +35,6 @@ module.exports = {
     },
     html: {
         files: ['library/html/**/*.html'],
-        tasks: ['replace:test']
+        tasks: ['replace:dev']
     }
 };

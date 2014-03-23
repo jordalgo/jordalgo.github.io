@@ -3,7 +3,7 @@ var src = 'library/scripts/main.js';
 var dest = 'library/scripts/build/main.js';
 var shim = {
   jQuery: {
-    path: 'library/scripts/vendor/jquery-1.8.1.min.js',
+    path: 'library/scripts/vendor/jquery.min.js',
     exports: '$'
   }
 };

@@ -5,7 +5,9 @@
   <div class="site-info" id="{{site.name}}">
     <h6>{{site.name}}</h6>
     <p>{{site.description}}</p>
+    {{#if site.details}}
     <p><u>Site Details</u>: {{site.details}}</p>
+    {{/if}}
     {{#if site.designer}}
       <p>Designed by <a href="{{site.designer.site}}">{{site.designer.name}}</a></p>
     {{/if}}

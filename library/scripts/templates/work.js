@@ -10,6 +10,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
+  buffer += "\n    <p><u>Site Details</u>: "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.details)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</p>\n    ";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1;
   buffer += "\n      <p>Designed by <a href=\""
     + escapeExpression(((stack1 = ((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.site)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\">"
@@ -18,7 +27,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n      <p><a href=\""
@@ -41,13 +50,14 @@ function program3(depth0,data) {
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</h6>\n    <p>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.description)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</p>\n    <p><u>Site Details</u>: "
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.details)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</p>\n    ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.designer), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.details), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.link), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.designer), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.link), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </div>\n</div>\n";
   return buffer;

@@ -1,0 +1,663 @@
+* {
+
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	border-collapse:collapse;
+
+}
+
+body {
+	padding: 0px;
+	border: 0px;
+	background-color: #3b2309;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 16pt;
+	font-size: 11pt;
+	color: #3a2308;
+}
+
+
+div, th, tr, td, table {
+
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	border-collapse: 0px;
+	vertical-align: top;
+
+}
+
+p {
+	
+	padding: 0px 0px 7px 0px;
+
+}
+
+a { 
+
+	color: #fff;
+	text-decoration: none;
+	
+	
+	}
+	
+a:hover {
+
+	text-decoration: none;
+	
+}
+ 
+span.brown {
+
+	color: #3a2308;
+
+}
+
+span.white {
+
+	color: #fff;
+
+}
+
+ul {
+
+	padding: 5px 0px 5px 12px;
+
+}
+
+ol {
+
+	padding: 5px 0px 7px 16px;
+
+
+}
+
+h3 {
+
+	color: #fff;
+	font-size: 12pt;
+	text-transform:uppercase;
+	margin: 0px 0px 7px 0px;
+
+}
+
+hr {
+	background-color: #eee;
+	line-height: 1px;
+	display: block;
+	height: 1px;
+	width: 100%;
+	border: 0;
+	margin: 0px 0px 7px 0px;
+}
+
+/*--------Text Styles-------------*/
+
+
+#intro {
+
+	color: #3a2308;
+	font-size: 11pt;
+	line-height: 18pt;
+
+}
+
+.headerbox img.headerimage {
+
+	border: 4px solid #fff;
+	float: left;
+	margin: 0px 35px 15px 0px;
+
+}
+
+.headerbox img.headertitle {
+
+	
+	margin: 0px 0px 15px 0px;
+
+}
+
+
+.headerbox a:hover {
+
+	text-decoration: none;
+	color: #3a2308;
+	background-color: #fff;
+}
+ 
+
+img.whiteborder {
+
+	border: 2px solid #fff;
+
+}
+
+
+.hidden-content a {
+
+	background-color: #FFFFFF;
+	color: #3a2308;
+	padding: 0px 2px 0px 2px;
+
+}
+
+.hidden-content a:hover {
+
+	background-color: #3a2308;
+	color: #fff;
+	text-decoration: none;
+
+}
+
+a.slideshow {
+
+	width: 184px;
+	height: 98px;
+	display: inline-block;
+	margin: 0px 8px 14px 0px;
+	border: 2px solid #fff;
+	padding: 0px;
+
+}
+
+a.slideshow:hover {
+
+	border: 2px solid #3b2309;
+
+}
+
+
+
+#navbox a {
+
+	text-indent: -9999px;
+	display: inline-block;
+	height: 26px; 
+
+}
+
+#navbox a.photoslink {
+
+	width: 113px;
+	background-image: url(images/nav/photos.png);
+	background-position: left 0px;
+	
+
+}
+
+#navbox a.photoslink:hover {
+
+	background-position: left -26px;
+
+}
+
+
+#navbox a.visitinglink {
+
+	width: 153px;
+	background-image: url(images/nav/visiting.png);
+	background-position: left 0px;
+	
+
+}
+
+#navbox a.visitinglink:hover {
+
+	background-position: left -26px;
+
+}
+
+#navbox a.theeventlink {
+
+	width: 110px;
+	background-image: url(images/nav/theevent.png);
+	background-position: left 0px;
+	
+
+}
+
+#navbox a.theeventlink:hover {
+
+	background-position: left -26px;
+
+}
+
+#navbox a.rsvplink {
+
+	width: 115px;
+	background-image: url(images/nav/rsvp.png);
+	background-position: left 0px;
+	
+
+}
+
+#navbox a.rsvplink:hover {
+
+	background-position: left -26px;
+
+}
+
+
+a.morearrow {
+
+	width: 55px;
+	height: 54px;
+	display:block;
+	background-image: url(images/arrow.png);
+	background-position: left 0px;
+	float: right;
+	margin: 84px 30px 0px 0px;
+
+}
+
+
+
+
+a.arrowdown {
+
+	margin-top: 600px;
+
+}
+
+#contact {
+
+	color: #fff;
+
+}
+
+#contact a {
+
+	color: #65c6c4;
+	text-decoration: none;
+	
+	}
+	
+#contact a:hover {
+
+	text-decoration: underline;
+
+}
+
+
+#footer a {
+
+	color: #66cac8;
+
+}
+
+#footer a:hover {
+
+	text-decoration: underline;
+
+}
+
+
+
+/*TOP BAR-------------------------*/
+
+#container {
+
+	height: auto;
+	display: block;
+	border-left: 4px solid #3b2309; /*Dark Brown*/
+	background-color: #fff;
+	
+
+}
+
+#topbar {
+
+	width: 100%;
+	height: 388px;
+	display: block;
+	background-color: #fff;
+	border-bottom: 1px solid #fff;
+	background-image: url(images/topbg4.jpg);
+	background-repeat:repeat-x;
+	
+
+}
+
+#topbox {
+
+	width: 922px;
+	height:388px;
+	display:block;
+	background-image: url(images/topbg4full.jpg);
+	background-repeat: no-repeat;
+
+
+}
+
+#logo {
+
+	width: 498px;
+	height: 191px;
+	display: block;
+	float: right;
+	padding: 0px 102px 0px 0px;
+
+}
+
+#navintro {
+	width: 600px;
+	height: 200px;
+	display: block;
+	float: right;
+}
+
+#navbox {
+
+	width: 500px;
+	height: 44px;
+	display: block;
+	padding: 22px 86px 0px 0px;
+
+}
+
+
+#intro {
+
+	width: 600px;
+	display: block;
+	padding: 15px 0px 0px 0px;
+
+}
+
+
+#map {
+
+	width: 305px;
+	height: 375px;
+	padding: 0px 0px 0px 0px;
+	display: block;
+	float: left;
+
+}
+
+#midcontainer {
+
+	
+	background-color: #40a8a7;
+	background-image:url(images/barbgfull.jpg);
+	background-repeat: repeat-y;
+	background-position: left top;
+
+
+}
+
+
+.outerbox {
+
+	width: 100%;
+	background-image:url(images/bggradient.jpg);
+	background-repeat: repeat-x;
+	background-position: left top;
+	
+
+}
+
+.contentbox {
+
+	width: 100%;
+	height: 214px;
+	display: block;
+	border-bottom: 1px solid #fff;
+	position: relative;
+	top: 0px;
+	background-image:url(images/barbg.jpg);
+	background-repeat:no-repeat;
+	background-position: left top;
+
+}
+
+.bigcontentbox {
+
+	width: 100%;
+	height: auto;
+	display: block;
+	border-bottom: 1px solid #fff;
+	position: relative;
+	top: 0px;
+	background-image:url(images/barbg.jpg);
+	background-repeat:no-repeat;
+	background-position: left top;
+	
+
+}
+
+.headerbox {
+
+	width: 887px;
+	height: 138px;
+	padding: 40px 0px 36px 35px;
+	display: block;
+	
+	
+	
+
+}
+
+/*.arrow {
+
+	width: 55px;
+	height: 102px;
+	display: block;
+	float: right;
+	padding: 35px 0px 0px 150px;
+
+}*/
+
+#theevent {
+
+	
+
+
+}
+
+table.generic {
+
+	width: 600px;
+
+}
+
+table.generic td.col1 {
+
+	width: 290px;
+	padding: 0px 20px 0px 0px;
+
+
+}
+
+#visiting {
+
+	
+
+
+}
+
+#photos {
+
+	
+
+
+}
+
+.hidden-content {
+
+	width: 887px;
+	padding: 0px 0px 30px 35px;
+	display: block;
+	color: #3a2308;
+	
+
+
+}
+
+.hidden-table td.subheads {
+
+	width: 252px;
+	padding: 0px 35px 0px 0px;
+	border-top: double #ebe9e6;
+
+
+}
+
+.hidden-table td.right-content {
+
+	width: 600px;
+	padding: 20px 0px 20px 0px;
+	border-top: double #ebe9e6;
+
+
+}
+
+
+
+
+#contact {
+
+	width: 100%;
+	height: 214px;
+	display: block;
+	background-image:url(images/bottombg.jpg);
+	background-repeat:no-repeat;
+	background-position: left top;
+	background-color: #3a2308;
+
+}
+
+table#contacttable td {
+	
+	height: 136px;
+
+}
+
+table#contacttable td#col1{
+
+	width: 250px;
+	padding: 0px 35px 0px 0px;
+
+}
+
+table#contacttable td#col2{
+
+	width: 270px;
+	padding: 0px 26px 0px 0px;
+
+}
+
+
+table#contacttable td#col3{
+
+	width: 220px;
+	padding: 0px 56px 0px 20px;
+
+}
+
+
+
+
+
+#textbox {
+
+	width: 220px;
+	height: 60px;
+	padding: 3px 0px 0px 4px;
+	background-color: #fff;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 16pt;
+	font-size: 10pt;
+	color: #3a2308;
+	margin: 0px 0px 7px 0px;
+	
+
+}
+
+.inputbox1 {
+
+	width: 220px;
+	height: 24px;
+	padding: 3px 0px 0px 4px;
+	background-color: #fff;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 16pt;
+	font-size: 10pt;
+	color: #3a2308;
+	margin: 0px 0px 7px 0px;
+
+}
+
+.inputbox2 {
+
+	width: 176px;
+	height: 24px;
+	padding: 3px 0px 0px 4px;
+	background-color: #fff;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 16pt;
+	font-size: 10pt;
+	color: #3a2308;
+	margin: 0px 0px 7px 0px;
+
+}
+
+.radiobox {
+
+	margin: 0px 5px 0px 0px;
+
+}
+
+.button {
+
+	width: 180px;
+	height: 27px;
+	background-image:url(images/sendbutton.jpg);
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+
+}
+
+
+#footer {
+	
+	width: 100%;
+	height: 40px;
+	display: block;
+	background-color: #3a2308;
+	border-top: 1px solid #fff;
+	color: #fff;
+	
+
+}
+
+#footercontent {
+
+	padding: 10px 0px 0px 35px;
+
+}
+
+/*-------------------------------------------------
+This is the float hack brought to you by the good people at 
+http://csscreator.com/?q=attributes/containedfloat.php */
+.floatcontainer:after{ 
+	content: "."; 
+	display: block; 
+	height: 0; 
+	font-size:0; 
+	clear: both; 
+	visibility:hidden; 
+	
+} 
+
+.floatcontainer{
+
+	display: inline-block;
+	
+} 
+
+/* Hides from IE Mac \*/ 
+* html .floatcontainer {height: 1%;} 
+.floatcontainer{display:block;} 
+/* End Hack */

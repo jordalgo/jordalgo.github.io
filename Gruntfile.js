@@ -8,7 +8,27 @@ module.exports = function(grunt) {
     //Automatically load grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    // Load our custom grunt tasks.
-    grunt.loadTasks('./library/grunt/tasks');
+    // run to develop 
+    grunt.registerTask(
+      'default',
+      [
+        'replace:dev',
+        'watch'
+      ]
+    );
+
+    // run before publishingn
+    grunt.registerTask(
+      'prod',
+      [
+        'jshint',
+        'handlebars',
+        'less',
+        'replace:prod',
+        'replace:removeconsole', 
+        'browserify:prod',
+        'uglify'
+      ]
+    );
 
 };

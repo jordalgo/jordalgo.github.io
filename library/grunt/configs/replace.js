@@ -27,6 +27,8 @@ module.exports = {
         },
         files: files
     },
+
+    //doesn't include livereload script
     prod: {
         options: {
             variables: {
@@ -39,5 +41,28 @@ module.exports = {
             }
         },
         files: files
+    },
+
+    // removes console.log from production code
+    removeconsole: {
+        options: {
+            patterns: [
+                {
+                    match: /console.log\('[A-Za-z0-9', ]*\);/g,
+                    replacement: ''
+                }
+            ],
+            usePrefix: false
+        },
+        files: [
+            {
+                expand: true,
+                src: [
+                    'library/scripts/**/*.js',
+                    '!library/scripts/vendor/*.js',
+                    '!library/scripts/build/*.js'
+                ]
+            }
+        ]
     }
 };

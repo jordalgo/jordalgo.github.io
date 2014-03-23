@@ -19,6 +19,8 @@ function loadWork(el){
 
   highlightNav.reCalculateHeights();
 
+  
+
 }
 
 module.exports = loadWork;

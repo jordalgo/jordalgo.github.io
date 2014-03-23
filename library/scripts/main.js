@@ -25,4 +25,5 @@ $(document).ready(function(){
   //fade in the page
   $('.yes-js').animate({ 'opacity' : 1}, 2000);
 
+
 });
