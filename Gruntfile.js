@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       ]
     );
 
-    // run before publishingn
+    // run before publishing
     grunt.registerTask(
       'prod',
       [
@@ -28,6 +28,21 @@ module.exports = function(grunt) {
         'replace:removeconsole', 
         'browserify:prod',
         'uglify'
+      ]
+    );
+
+    // run to publish
+    grunt.registerTask(
+      'publish',
+      [
+        'jshint',
+        'handlebars',
+        'less',
+        'replace:prod',
+        'replace:removeconsole', 
+        'browserify:prod',
+        'uglify',
+        'exec'
       ]
     );
 

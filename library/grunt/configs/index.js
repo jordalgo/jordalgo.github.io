@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     browserify: require('./browserify'),
     watch: require('./watch'),
     handlebars: require('./handlebars'),
-    uglify: require('./uglify')
+    uglify: require('./uglify'),
+    exec: require('./exec')
   };
 };
