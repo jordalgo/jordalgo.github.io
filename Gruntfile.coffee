@@ -113,7 +113,7 @@ module.exports = (grunt) ->
         tasks: ['less']
       html:
         files: ['index.html']
-        tasks: ['']
+        tasks: []
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 

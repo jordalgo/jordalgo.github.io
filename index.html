@@ -9,9 +9,9 @@
 <link href='http://fonts.googleapis.com/css?family=Alegreya:400,900,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" media="all" href="library/style/css/style.css" />
 <link rel="icon" href="library/images/logo-small.png">
-<!--[if lt IE 9]>
-<script src="library/scripts/libs/html5shiv.js"></script>
-<![endif]-->
+<script src="library/scripts/build/main.js" async></script>
+<script>document.createElement( "picture" );</script>
+<script src="library/scripts/vendor/picturefill.min.js" async></script>
 </head>
 <body class="no-js" id="jrbody">
     <script>document.getElementById("jrbody").className = "yes-js";</script>
@@ -33,8 +33,13 @@
     </div>
 </nav>
     
-    <header class="full cover-image" data-big-image="library/images/cover-image5.jpg">
-    <img src="library/images/cover-image-mobile1.jpg" alt="Jordan Rome - Web Developer" id="mobile-cover">
+    <header class="full cover-image">
+      <picture>
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+        <source srcset="library/images/cover-image5.jpg" media="(min-width: 767px)">
+        <!--[if IE 9]></video><![endif]-->
+        <img srcset="library/images/cover-image-mobile1.jpg" alt="Jordan Rome - Web Developer">
+      </picture>
     <div class="tagline">
         <div class="signature">Jordan Rome</div>
         <h1><span class="orange">Web</span> Developer</h1>
@@ -165,5 +170,4 @@
 
 </body>
 <!--livereload-->
-<script src="library/scripts/build/main.js"></script>
 </html>
