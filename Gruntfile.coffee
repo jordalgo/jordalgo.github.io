@@ -36,6 +36,7 @@ module.exports = (grunt) ->
             console: true
             module: true
             document: true
+        laxcomma: true
       main:
         files:
           src: ['library/scripts/modules/**/*.js', 'library/scripts/main.js']
