@@ -22,8 +22,5 @@ $(document).ready(function(){
   if (WINDOW_WIDTH > 979) {
      loadWork(elWorkContainer);
   }
-
-  //fade in the page
-  $('.yes-js').animate({ 'opacity' : 1}, 2000);
  
 });
