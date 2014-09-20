@@ -47,7 +47,7 @@ function setEventListeners() {
     // });
 
     $("#more-work").click(function() { 
-        loadWork($('.work-site-container'));
+        loadWork(document.querySelector('.work-site-container'));
     });
 
     $(window).scroll(function () { 

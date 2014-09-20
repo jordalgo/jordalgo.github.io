@@ -14,7 +14,7 @@ function loadWork(el){
     workSet += WORK_TEMPLATE({site: WORK_DATA[w]});
   }
 
-  el.html(workSet); //add the work
+  el.innerHTML = workSet; //add the work
   document.querySelector('#more-work').remove();
 
   highlightNav.reCalculateHeights();
