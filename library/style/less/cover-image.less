@@ -1,7 +1,19 @@
 header {
 	z-index: 2;
 	position: relative;
+	background-image: url("@{imageLocation}/cover-image5.jpg");
+	background-repeat: no-repeat;
+	background-position: top center;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position: relative;
 	.zeroed;
+
+	&.cover-image {
+		height: 100%;
+	}
 
 	img,
 	picture {
@@ -83,6 +95,7 @@ header {
 
 	header {
 		background-image: none;
+		background-image: url("@{imageLocation}/cover-image-mobile1.jpg");
 
 		&.cover-image {
 			height: auto;

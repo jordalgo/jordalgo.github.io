@@ -42,9 +42,9 @@ function program5(depth0,data) {
 
   buffer += "<div class=\"work-site\">\n  <div class=\"site-image\" id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n    <img src=\""
+    + "\">\n    <div class=\"img-container\">\n      <img src=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.image)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"img-swap\" />\n  </div>\n  <div class=\"site-info\" id=\""
+    + "\" class=\"img-swap\" />\n    </div>\n  </div>\n  <div class=\"site-info\" id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\">\n    <h6>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.site)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

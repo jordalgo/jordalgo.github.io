@@ -10,8 +10,8 @@
 <link rel="stylesheet" type="text/css" media="all" href="library/style/css/style.css" />
 <link rel="icon" href="library/images/logo-small.png">
 <script src="library/scripts/build/main.js" async></script>
-<script>document.createElement( "picture" );</script>
-<script src="library/scripts/vendor/picturefill.min.js"></script>
+<!--<script>document.createElement( "picture" );</script>-->
+<!--<script src="library/scripts/vendor/picturefill.min.js"></script>-->
 </head>
 <body id="jrbody">
     <h1 class="assistive-text">Jordan Rome, Web Developer</h1>
@@ -32,18 +32,13 @@
     </div>
 </nav>
     
-    <header class="full cover-image">
-      <picture>
-        <!--[if IE 9]><video style="display: none;"><![endif]-->
-        <source srcset="library/images/cover-image6.jpg" media="(min-width: 767px)">
-        <!--[if IE 9]></video><![endif]-->
-        <img srcset="library/images/cover-image-mobile1.jpg" alt="Jordan Rome - Web Developer">
-      </picture>
+  <header class="full cover-image">
+    <img src="library/images/cover-image-mobile1.jpg" alt="Jordan Rome - Web Developer" id="mobile-cover">
     <div class="tagline">
         <div class="signature">Jordan Rome</div>
         <h1><span class="orange">Web</span> Developer</h1>
     </div>
-</header>
+  </header>
     
     <div class="logo-container">
         <a id="logo" href="#jrbody" class="totop" title="Back to the top">JR Logo</a>
@@ -98,7 +93,9 @@
   <h3>My Work</h3>
   <div class="work-site">
       <div class="site-image" id="ace">
-          <img src="library/images/work/ace1.jpg" alt="ACE 1" class="img-swap" />
+          <div class="img-container">
+            <img src="library/images/work/ace1.jpg" alt="ACE 1" class="img-swap" />
+          </div>
       </div>
        <div class="site-info" id="ace">
           <h6>Academy of Creative Education</h6>
@@ -111,7 +108,9 @@
   </div>
   <div class="work-site" id="cunyprep">
       <div class="site-image">
-          <img src="library/images/work/cunyprep1.jpg" alt="CUNY Prep 1" class="img-swap" />
+          <div class="img-container">
+            <img src="library/images/work/cunyprep1.jpg" alt="CUNY Prep 1" class="img-swap" />
+          </div>
       </div>
        <div class="site-info">
           <h6>CUNY Prep</h6>

@@ -2,8 +2,28 @@
 
 @linkColor: #ee5408; //orange
 @imageLocation: ~"../../images";
+@img-work-ratio:              (467%/700%*100%);
 
 /*Mixins*/
+
+// this prevents re-flows if the page is resized
+.image-container(@pb: 0px) {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-bottom: @pb;
+
+  &:hover { background-color: transparent; }
+
+  img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+}
 
 .zeroed {
 	  margin:0px;
