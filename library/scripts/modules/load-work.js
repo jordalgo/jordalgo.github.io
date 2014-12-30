@@ -1,26 +1,23 @@
-var WORK_DATA = require('../data/work');
-var Handlebars = require('handlebars/runtime').default;
-var TEMPLATES = require('../templates/work')(Handlebars);
-var WORK_TEMPLATE = TEMPLATES['library/scripts/templates/work.hbs'];
-var highlightNav = require('./highlight-nav');
 
-function loadWork(el){
+const Handlebars = require('handlebars/runtime').default
+  , TEMPLATES = require('../templates/work')(Handlebars)
+  , WORK_TEMPLATE = TEMPLATES['library/scripts/templates/work.hbs']
+  ;
 
-  var w = 0,
-    max = WORK_DATA.length,
-    workSet = '';
+import WORK_DATA from './work';
+import highlightNav from './highlight-nav';
 
-  for (; w < max; w++) {
-    workSet += WORK_TEMPLATE({site: WORK_DATA[w]});
-  }
+export default el => {
+  let workSet = '';
+
+  WORK_DATA.forEach(work => {
+    workSet += WORK_TEMPLATE({site: work });
+  });
 
   el.innerHTML = workSet; //add the work
   document.querySelector('#more-work').remove();
 
   highlightNav.reCalculateHeights();
 
-  
+};
 
-}
-
-module.exports = loadWork;

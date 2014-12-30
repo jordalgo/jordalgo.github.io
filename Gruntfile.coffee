@@ -4,11 +4,11 @@ module.exports = (grunt) ->
 
   replaceFiles =
     src: ['index.html']
-    dest: 'index.html' 
+    dest: 'index.html'
 
-  browerifySrc = 'library/scripts/main.js'
+  browerifySrc = 'library/scripts/es5/main.js'
   browerifyDest = 'library/scripts/build/main.js'
-  shim = 
+  shim =
     jQuery:
       path: 'library/scripts/vendor/jquery.min.js'
       exports: '$'
@@ -37,6 +37,7 @@ module.exports = (grunt) ->
             module: true
             document: true
         laxcomma: true
+        esnext: true
       main:
         files:
           src: ['library/scripts/modules/**/*.js', 'library/scripts/main.js']
@@ -88,24 +89,37 @@ module.exports = (grunt) ->
         files:
           'library/scripts/build/main.js': ['library/scripts/build/main.js']
 
+    '6to5':
+        options:
+          modules: 'common'
+        build:
+          files: [
+            {
+              expand: true
+              cwd: 'library/scripts/modules/'
+              src: ['**/*.js']
+              dest: 'library/scripts/es5/'
+            }
+          ]
+
     watch:
       options:
         livereload: true
       javascript:
           files: [
-            'library/scripts/**/*.js'
-            '!library/scripts/vendor/*.js'
-            '!library/scripts/templates/*.js'
-            '!library/scripts/build/*.js'
+            'library/scripts/modules/**/*.js'
           ]
           tasks: ['jshint:main']
       browserify:
         files: [
-          'library/scripts/**/*.js'
-          '!library/scripts/vendor/*.js'
-          '!library/scripts/build/*.js'
+          'library/scripts/es5/**/*.js'
         ]
         tasks: ['browserify']
+      sixtofive:
+        files: [
+          'library/scripts/modules/**/*.js'
+        ]
+        tasks: ['6to5']
       templates:
         files: ['library/scripts/templates/*.hbs']
         tasks: ['handlebars']
@@ -126,6 +140,7 @@ module.exports = (grunt) ->
       'replace:' + ext
       'handlebars'
       'jshint'
+      '6to5'
       'less'
       'browserify'
     ]

@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     "name" : "Storyscape Journal", 
     "image" : "library/images/work/storyscape1.jpg", 
@@ -112,3 +112,4 @@ module.exports = [
     }
   }
 ];
+

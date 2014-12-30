@@ -1,17 +1,22 @@
-var $ = require('jQuery');
-var adjustPaddingBottom = require('./adjust-padding-bottom');
-var loadWork = require('./load-work');
-var highlightNav = require('./highlight-nav');
+let $ = require('jQuery');
 
-function setEventListeners() {
+import adjustPaddingBottom from './adjust-padding-bottom';
+import loadWork from './load-work';
+import highlightNav from './highlight-nav';
 
-    var userScrolled = false,
-        resize = {};
+export default () => {
 
-    $('a[href*=#]').click(function() {
-    if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
-            var $target = $(this.hash);
-            $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+    let userScrolled = false
+      , resize = {}
+      ;
+
+    $('a[href*=#]').click((e) => {
+    let location = window.location
+      , target = (e.target.nodeName === 'SPAN') ? e.target.parentElement : e.target
+      ;
+    if (location.pathname.replace(/^\//,'') === target.pathname.replace(/^\//,'') && location.hostname === target.hostname) {
+            var $target = $(target.hash);
+            $target = $target.length && $target || $('[name=' + target.hash.slice(1) +']');
             if ($target.length) {
                 var targetOffset = Math.ceil($target.offset().top);
                 $('html,body').animate({scrollTop: targetOffset}, 1500);
@@ -20,56 +25,40 @@ function setEventListeners() {
         }
     });
 
-    $("#mobile-social-button").click(function() {
-        if (!$(".mobile-social-tab").length) {
-            $("<div id=\"ms-container\"><div class=\"mobile-social-tab\">" + $(".social-tab").html() + "</div></div>").prependTo(".access");
-            $(".mobile-social-tab").hide(0);    
+    $('#mobile-social-button').click(() => {
+        if (!$('.mobile-social-tab').length) {
+            $('<div id=\'ms-container\'><div class=\'mobile-social-tab\'>' + $('.social-tab').html() + '</div></div>').prependTo('.access');
+            $('.mobile-social-tab').hide(0);
         }
-        $(".mobile-social-tab").toggle("slow");
-        $('.social-icons').css({ "opacity" : 0 }).animate({ 'opacity' : 1}, 2000);
+        $('.mobile-social-tab').toggle('slow');
+        $('.social-icons').css({ 'opacity' : 0 }).animate({ 'opacity' : 1}, 2000);
 
 
     });
 
-    $(".input").focus(function() {
-        var val = $(this).val(), defaultVal = $(this).attr("data-default");
-        if (val === defaultVal) { $(this).val(''); }
-    });
-
-    $(".input").blur(function() {
-        var val = $(this).val(), defaultVal = $(this).attr("data-default");
-        if (val === '') { $(this).val(defaultVal); }
-    });
-
-    // $("#send-button").click(function(e) {
-    //     e.preventDefault();
-    //     return validateForm();
-    // });
-
-    $("#more-work").click(function() { 
+    $('#more-work').click(() => { 
         loadWork(document.querySelector('.work-site-container'));
     });
 
-    $(window).scroll(function () { 
+    $(window).scroll(() => { 
         userScrolled = true;
     });
 
-    $(window).resize(function() {
+    $(window).resize(() => {
         clearTimeout(resize);
-        resize = setTimeout(function(){
+        resize = setTimeout(() => {
             highlightNav.reCalculateHeights();
             adjustPaddingBottom($('.contact'));
         }, 500);
     });
 
     //set scroll check interval
-    setInterval(function() {
+    setInterval(() => {
         if (userScrolled) {
             userScrolled = false;
             highlightNav.highlightNav();
         }
     }, 250);
 
-}
+};
 
-module.exports = setEventListeners;
