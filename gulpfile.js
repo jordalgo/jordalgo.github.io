@@ -27,7 +27,6 @@ gulp.task('minify-css', ['less'], function() {
 });
 
 gulp.task('jshint', function() {
-  console.log(argv);
   return gulp.src('./library/scripts/modules/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('jshint-stylish'))
@@ -90,7 +89,9 @@ gulp.task('git', function(){
   return gulp.src('.')
     .pipe(plugins.git.add({args: '--all'}))
     .pipe(plugins.git.commit(argv.commit))
-    .pipe(plugins.git.push('all'))
+    .pipe(plugins.git.push('all', 'master', function (err) {
+      if (err) { throw err; }
+    }))
     ;
 });
 
