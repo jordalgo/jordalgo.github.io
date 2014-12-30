@@ -1,8 +1,5 @@
 
-const Handlebars = require('handlebars/runtime').default
-  , TEMPLATES = require('../templates/work')(Handlebars)
-  , WORK_TEMPLATE = TEMPLATES['library/scripts/templates/work.hbs']
-  ;
+const TEMPLATE = require('../templates/work.hbs');
 
 import WORK_DATA from './work';
 import highlightNav from './highlight-nav';
@@ -11,7 +8,7 @@ export default el => {
   let workSet = '';
 
   WORK_DATA.forEach(work => {
-    workSet += WORK_TEMPLATE({site: work });
+    workSet += TEMPLATE({site: work });
   });
 
   el.innerHTML = workSet; //add the work
