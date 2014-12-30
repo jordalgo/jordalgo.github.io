@@ -5,6 +5,8 @@ var gulp = require('gulp')
   , browserSync = require('browser-sync')
 
   , CSS_PATH = './library/style/css/'
+
+  , argv = require('yargs').argv
   ;
 
 gulp.task('less', function() {
@@ -25,6 +27,7 @@ gulp.task('minify-css', ['less'], function() {
 });
 
 gulp.task('jshint', function() {
+  console.log(argv);
   return gulp.src('./library/scripts/modules/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('jshint-stylish'))
@@ -69,25 +72,26 @@ gulp.task('uglify', ['browserify'], function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./library/scripts/modules/*.js', ['jshint', 'browserify']);
-  gulp.watch('./library/style/less/**/*.less', ['less']);
-  gulp.watch('./library/scripts/templates/*.hbs', ['browserify']);
+  gulp.watch('./library/scripts/modules/*.js', ['jshint', 'browserify', browserSync.reload]);
+  gulp.watch('./library/style/less/**/*.less', ['less', browserSync.reload]);
+  gulp.watch('./library/scripts/templates/*.hbs', ['browserify', browserSync.reload]);
+  gulp.watch('./index.html', [browserSync.reload]);
 });
 
-
 gulp.task('browser-sync', function () {
-   var files = [
-      './*.html',
-      './library/scripts/modules/*.js',
-      './library/style/css/*.css',
-      './library/scripts/templates/*.hbs'
-   ];
-
-   browserSync.init(files, {
+   browserSync({
       server: {
          baseDir: './'
       }
    });
+});
+
+gulp.task('git', function(){
+  return gulp.src('.')
+    .pipe(plugins.git.add({args: '--all'}))
+    .pipe(plugins.git.commit(argv.commit))
+    .pipe(plugins.git.push('all'))
+    ;
 });
 
 gulp.task(
@@ -107,6 +111,9 @@ gulp.task(
     'minify-css'
     , 'jshint'
     , 'uglify'
-  ]
+  ],
+  function() {
+    gulp.start('git');
+  }
 );
 
