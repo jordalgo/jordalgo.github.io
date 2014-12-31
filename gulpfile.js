@@ -93,6 +93,10 @@ gulp.task('git', function(){
     ;
 });
 
+gulp.task('git-push', ['git'], function(){
+  plugins.git.push('all');
+});
+
 gulp.task(
   'default',
   [
@@ -112,7 +116,7 @@ gulp.task(
     , 'uglify'
   ],
   function() {
-    gulp.start('git');
+    gulp.start('git-push');
   }
 );
 
