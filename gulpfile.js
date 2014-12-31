@@ -27,7 +27,6 @@ gulp.task('minify-css', ['less'], function() {
 });
 
 gulp.task('jshint', function() {
-  console.log(argv);
   return gulp.src('./library/scripts/modules/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('jshint-stylish'))
@@ -86,15 +85,17 @@ gulp.task('browser-sync', function () {
    });
 });
 
-gulp.task('git', function(){
+gulp.task('git-commit', function(){
   return gulp.src('.')
     .pipe(plugins.git.add({args: '--all'}))
     .pipe(plugins.git.commit(argv.commit))
     ;
 });
 
-gulp.task('git-push', ['git'], function(){
-  plugins.git.push('all');
+gulp.task('git-push', ['git-commit'], function(){
+  plugins.git.push('all', 'master', function(err){
+    if (err) { console.log(err); }
+  });
 });
 
 gulp.task(
