@@ -109,6 +109,7 @@ gulp.task(
   ]
 );
 
+// run this task with a commit message gulp deploy --commit="commit message"
 gulp.task(
   'deploy',
   [
