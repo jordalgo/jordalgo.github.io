@@ -5,6 +5,7 @@ var gulp = require('gulp')
   , browserSync = require('browser-sync')
 
   , CSS_PATH = './library/style/css/'
+  , SCRIPT_PATH = './library/scripts/'
 
   , argv = require('yargs').argv
   ;
@@ -27,29 +28,21 @@ gulp.task('minify-css', ['less'], function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src('./library/scripts/modules/**/*.js')
+  return gulp.src(SCRIPT_PATH + 'modules/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('jshint-stylish'))
     .pipe(plugins.jshint.reporter('fail'));
 });
 
-gulp.task('templates', function(){
-  return gulp.src(['./library/scripts/templates/*.hbs'])
-    .pipe(plugins.handlebars())
-    .pipe(plugins.defineModule('commonjs'))
-    .pipe(gulp.dest('./library/scripts/templates/'))
-    ;
-});
-
 gulp.task('e6to5', function () {
-  return gulp.src('./library/scripts/modules/*.js')
+  return gulp.src(SCRIPT_PATH + 'modules/*.js')
     .pipe(plugins['6to5']())
-    .pipe(gulp.dest('./library/scripts/es5/'))
+    .pipe(gulp.dest(SCRIPT_PATH + 'es5/'))
     ;
 });
 
 gulp.task('browserify', ['e6to5'], function() {
-  return gulp.src('./library/scripts/es5/main.js')
+  return gulp.src(SCRIPT_PATH + 'es5/main.js')
     .pipe(plugins.browserify({
       transform: [browserifyHandlebars],
       shim: {
@@ -59,21 +52,21 @@ gulp.task('browserify', ['e6to5'], function() {
         }
       }
     }))
-    .pipe(gulp.dest('./library/scripts/build/'))
+    .pipe(gulp.dest(SCRIPT_PATH + 'build/'))
     ;
 });
 
 gulp.task('uglify', ['browserify'], function() {
-  return gulp.src('./library/scripts/build/main.js')
+  return gulp.src(SCRIPT_PATH + 'build/main.js')
     .pipe(plugins.uglify())
-    .pipe(gulp.dest('./library/scripts/build/'))
+    .pipe(gulp.dest(SCRIPT_PATH + 'build/'))
     ;
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./library/scripts/modules/*.js', ['jshint', 'browserify', browserSync.reload]);
+  gulp.watch(SCRIPT_PATH + 'modules/*.js', ['jshint', 'browserify', browserSync.reload]);
   gulp.watch('./library/style/less/**/*.less', ['less', browserSync.reload]);
-  gulp.watch('./library/scripts/templates/*.hbs', ['browserify', browserSync.reload]);
+  gulp.watch(SCRIPT_PATH + 'templates/*.hbs', ['browserify', browserSync.reload]);
   gulp.watch('./index.html', [browserSync.reload]);
 });
 
