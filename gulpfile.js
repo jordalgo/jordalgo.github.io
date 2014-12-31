@@ -85,9 +85,10 @@ gulp.task('git-commit', function(){
     ;
 });
 
-gulp.task('git-push', ['git-commit'], function(){
+gulp.task('git-push', ['git-commit'], function(done){
   plugins.git.push('all', 'master', function(err){
     if (err) { console.log(err); }
+    done();
   });
 });
 
