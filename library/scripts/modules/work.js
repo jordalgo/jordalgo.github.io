@@ -1,5 +1,25 @@
 export default [
   {
+    "name": "Early College Initiative",
+    "image": "library/images/work/eci1.jpg",
+    "description": "The CUNY Early College Initiative (ECI) designs, develops, and supports schools that make earning a college degree more accessible, affordable, and attainable. ECI promotes social and economic mobility by restructuring the educational experience for students who are traditionally underrepresented in higher education.",
+    "details": "I recoded this site to be mobile friendly/responsive. I used wordpress, jquery, and some custom javascript for the sub-pages. Also employs the latest in site security, backups and caching.",
+    "link": {
+      "url": "http://earlycollege.cuny.edu/",
+      "text": "earlycollege.cuny.edu"
+    }
+  },
+  {
+    "name": "CUNY Prep",
+    "image": "library/images/work/cunyprep1.jpg",
+    "description": "CUNY Prep, a collaboration of the Mayor's Center for Economic Opportunity and The City University of New York, helps students ages 16-18 earn their High School Equivalency Diploma and enter college.",
+    "details": "A fully responsive site complete with multi-media and social media integration. Built using the CUNY custom CMS DOX (XML/XSL) and incorporating jQuery slideshows, accesibility standards, SEO, and google analytics.",
+    "link": {
+      "url": "http://www.cunyprep.org",
+      "text": "www.cunyprep.org"
+    }
+  },
+  {
     "name" : "Storyscape Journal", 
     "image" : "library/images/work/storyscape1.jpg", 
     "description": "Storyscape is an online literary journal that aims to collect stories of all kinds: ones that adhere to form and ones that don't, ones that really happened and ones someone invented, etc... ",
