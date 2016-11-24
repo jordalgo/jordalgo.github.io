@@ -4,7 +4,7 @@ import setEventListeners from './event-listeners';
 import adjustPaddingBottom from './adjust-padding-bottom';
 import loadWork from './load-work';
 
-$(document).ready(function(){
+$(document).ready(function() {
 
   let WINDOW_WIDTH = $(window).width(),
     elWorkContainer = document.querySelector('.work-site-container'),
@@ -21,6 +21,6 @@ $(document).ready(function(){
   if (WINDOW_WIDTH > 979) {
      loadWork(elWorkContainer);
   }
- 
+
 });
 

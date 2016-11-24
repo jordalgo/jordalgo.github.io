@@ -2,7 +2,7 @@ let $ = require('jQuery');
 
 import adjustPaddingBottom from './adjust-padding-bottom';
 import loadWork from './load-work';
-import highlightNav from './highlight-nav';
+import { highlightNav, reCalculateHeights } from './highlight-nav';
 
 export default () => {
 
@@ -10,7 +10,7 @@ export default () => {
       , resize = {}
       ;
 
-    $('a[href*=#]').click((e) => {
+    $('a[href*="#"]').click((e) => {
     let location = window.location
       , target = (e.target.nodeName === 'SPAN') ? e.target.parentElement : e.target
       ;
@@ -22,7 +22,9 @@ export default () => {
                 $('html,body').animate({scrollTop: targetOffset}, 1500);
                 return false;
             }
-        }
+            return true;
+    }
+    return true;
     });
 
     $('#mobile-social-button').click(() => {
@@ -36,18 +38,18 @@ export default () => {
 
     });
 
-    $('#more-work').click(() => { 
+    $('#more-work').click(() => {
         loadWork(document.querySelector('.work-site-container'));
     });
 
-    $(window).scroll(() => { 
+    $(window).scroll(() => {
         userScrolled = true;
     });
 
     $(window).resize(() => {
         clearTimeout(resize);
         resize = setTimeout(() => {
-            highlightNav.reCalculateHeights();
+            reCalculateHeights();
             adjustPaddingBottom($('.contact'));
         }, 500);
     });
@@ -56,7 +58,7 @@ export default () => {
     setInterval(() => {
         if (userScrolled) {
             userScrolled = false;
-            highlightNav.highlightNav();
+            highlightNav();
         }
     }, 250);
 

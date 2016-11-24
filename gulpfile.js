@@ -1,118 +1,110 @@
-var gulp = require('gulp')
-  , path = require('path')
-  , plugins = require('gulp-load-plugins')()
-  , browserifyHandlebars = require('browserify-handlebars')
-  , browserSync = require('browser-sync')
+const gulp = require('gulp');
+const path = require('path');
+const plugins = require('gulp-load-plugins')();
+const eslint = require('gulp-eslint');
+const less = require('gulp-less');
+const browserify = require('browserify');
+const hbsfy = require("hbsfy");
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const cleanCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const pump = require('pump');
 
-  , CSS_PATH = './library/style/css/'
-  , SCRIPT_PATH = './library/scripts/'
+const THEME_LIBRARY_PATH = './library/';
+const LESS_PATH = THEME_LIBRARY_PATH + 'style/less/';
+const SCRIPT_PATH = THEME_LIBRARY_PATH + 'scripts/';
+const JS_MODULES_GLOB = SCRIPT_PATH + 'modules/**/*.js';
+const BUILD_PATH = THEME_LIBRARY_PATH + 'build/';
 
-  , argv = require('yargs').argv
-  ;
+let watching = false;
+let dev = false;
 
-gulp.task('less', function() {
-  return gulp.src('./library/style/less/style.less')
-    .pipe(plugins.less({
-      generateSourceMap: true, // default true
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(gulp.dest(CSS_PATH))
-    ;
-});
+// Error Handler so watch doesn't kill the process on error.
+function onError(err) {
+  plugins.util.log(err.message);
+  if (watching) {
+    this.emit('end');
+  } else {
+    throw err;
+  }
+}
 
-gulp.task('minify-css', ['less'], function() {
-  return gulp.src(CSS_PATH + 'style.css')
-    .pipe(plugins.minifyCss())
-    .pipe(gulp.dest(CSS_PATH))
-    ;
-});
+function conditionalRun(fn) {
+  if (!dev) {
+    return fn();
+  }
+  return () => {};
+}
 
-gulp.task('jshint', function() {
-  return gulp.src(SCRIPT_PATH + 'modules/**/*.js')
-    .pipe(plugins.jshint('.jshintrc'))
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.jshint.reporter('fail'));
-});
+// Javascript Linting
+gulp.task('lint', () => gulp.src([JS_MODULES_GLOB])
+  .pipe(eslint())
+  .on('error', onError)
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+);
 
-gulp.task('e6to5', function () {
-  return gulp.src(SCRIPT_PATH + 'modules/*.js')
-    .pipe(plugins['6to5']())
-    .pipe(gulp.dest(SCRIPT_PATH + 'es5/'))
-    ;
-});
+// Less to CSS
+gulp.task('less', () => gulp.src([LESS_PATH + 'style.less'])
+  .pipe(less({
+    generateSourceMap: true,
+    paths: [ path.join(__dirname, 'less', 'includes') ]
+  }))
+  .on('error', onError)
+  .pipe(gulp.dest(BUILD_PATH + 'css/'))
+);
 
-gulp.task('browserify', ['e6to5'], function() {
-  return gulp.src(SCRIPT_PATH + 'es5/main.js')
-    .pipe(plugins.browserify({
-      transform: [browserifyHandlebars],
-      shim: {
-        jQuery: {
-          path: 'library/scripts/vendor/jquery.min.js',
-          exports: '$'
-        }
-      }
-    }))
-    .pipe(gulp.dest(SCRIPT_PATH + 'build/'))
-    ;
-});
+gulp.task('minify-css', ['less'], () => gulp.src([
+    `${BUILD_PATH}style.css`,
+    `${BUILD_PATH}style-base.css`
+  ])
+  .pipe(cleanCSS())
+  .pipe(gulp.dest(BUILD_PATH))
+);
 
-gulp.task('uglify', ['browserify'], function() {
-  return gulp.src(SCRIPT_PATH + 'build/main.js')
-    .pipe(plugins.uglify())
-    .pipe(gulp.dest(SCRIPT_PATH + 'build/'))
-    ;
+// Javascript Bundling
+gulp.task('bundle', () => browserify({
+    entries: [`${SCRIPT_PATH}modules/main.js`]
+  })
+  .transform(hbsfy)
+  .transform(babelify.configure({
+    presets : ['es2015']
+  }))
+  .bundle()
+  .pipe(source('main.js'))
+  .pipe(gulp.dest(BUILD_PATH))
+);
+
+gulp.task('uglify', ['bundle'], cb => {
+  pump(
+    [
+      gulp.src(`${BUILD_PATH}main.js`),
+      uglify(),
+      gulp.dest(BUILD_PATH)
+    ],
+    cb
+  );
 });
 
 gulp.task('watch', function() {
-  gulp.watch(SCRIPT_PATH + 'modules/*.js', ['jshint', 'browserify', browserSync.reload]);
-  gulp.watch('./library/style/less/**/*.less', ['less', browserSync.reload]);
-  gulp.watch(SCRIPT_PATH + 'templates/*.hbs', ['browserify', browserSync.reload]);
-  gulp.watch('./index.html', [browserSync.reload]);
+  watching = true;
+  gulp.watch(JS_MODULES_GLOB, ['lint', 'bundle']);
+  gulp.watch(LESS_PATH + '**/*.less', ['less']);
 });
 
-gulp.task('browser-sync', function () {
-   browserSync({
-      server: {
-         baseDir: './'
-      }
-   });
+gulp.task('dev', function() {
+  dev = true;
 });
 
-gulp.task('git-commit', function(){
-  return gulp.src('.')
-    .pipe(plugins.git.add({args: '--all'}))
-    .pipe(plugins.git.commit(argv.commit))
-    ;
-});
-
-gulp.task('git-push', ['git-commit'], function(done){
-  plugins.git.push('all', 'master', function(err){
-    if (err) { console.log(err); }
-    done();
-  });
-});
-
-gulp.task(
-  'default',
-  [
-    'less'
-    , 'jshint'
-    , 'browserify'
-    , 'watch'
-    , 'browser-sync'
+gulp.task('default', [
+    'dev',
+    'less',
+    'lint',
+    'bundle',
+    'watch'
   ]
 );
 
-// run this task with a commit message gulp deploy --commit="commit message"
-gulp.task(
-  'deploy',
-  [
-    'minify-css'
-    , 'jshint'
-    , 'uglify'
-  ],
-  function() {
-    gulp.start('git-push');
-  }
-);
+gulp.task('build', ['minify-css', 'lint', 'uglify']);
 

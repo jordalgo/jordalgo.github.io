@@ -1,11 +1,8 @@
 var $ = require('jQuery');
 
-const WINDOW_HEIGHT = window.innerHeight
-  , $COVER_IMAGE = $('.cover-image')
+const $COVER_IMAGE = $('.cover-image')
   , $ABOUT = $('.about-me')
   , $WORK = $('.work')
-  , $CONTACT = $('.contact')
-  , $TAGLINE = $('.tagline')
   ;
 
 let WINDOW_POS = $(window).scrollTop()
@@ -14,7 +11,7 @@ let WINDOW_POS = $(window).scrollTop()
   , TOP3_HEIGHT = TOP2_HEIGHT + $WORK.height()
   ;
 
-var highlightNav = () => {
+export function highlightNav() {
 
   WINDOW_POS = $(window).scrollTop();
 
@@ -30,11 +27,9 @@ var highlightNav = () => {
 
 };
 
-var reCalculateHeights = () => {
+export function reCalculateHeights() {
   COVER_IMAGE_HEIGHT = $COVER_IMAGE.height();
   TOP2_HEIGHT = COVER_IMAGE_HEIGHT + $ABOUT.height();
   TOP3_HEIGHT = TOP2_HEIGHT + $WORK.height();
 };
-
-export { highlightNav, reCalculateHeights };
 
