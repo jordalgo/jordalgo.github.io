@@ -1,4 +1,4 @@
-let $ = require('jQuery');
+let $ = require('jquery');
 
 import setEventListeners from './event-listeners';
 import adjustPaddingBottom from './adjust-padding-bottom';

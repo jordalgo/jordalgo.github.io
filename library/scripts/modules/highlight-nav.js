@@ -1,4 +1,4 @@
-var $ = require('jQuery');
+var $ = require('jquery');
 
 const $COVER_IMAGE = $('.cover-image')
   , $ABOUT = $('.about-me')

@@ -1,4 +1,4 @@
-let $ = require('jQuery');
+let $ = require('jquery');
 
 import adjustPaddingBottom from './adjust-padding-bottom';
 import loadWork from './load-work';

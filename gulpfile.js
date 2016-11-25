@@ -79,6 +79,7 @@ gulp.task('uglify', ['bundle'], cb => {
 
 gulp.task('browser-sync', () => {
   browserSync({
+    port: 8080,
     server: {
       baseDir: './'
     }
