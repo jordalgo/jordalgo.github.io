@@ -12,7 +12,7 @@ const uglify = require('gulp-uglify');
 const pump = require('pump');
 
 const THEME_LIBRARY_PATH = './library/';
-const LESS_PATH = THEME_LIBRARY_PATH + 'style/less/';
+const LESS_PATH = THEME_LIBRARY_PATH + 'style/';
 const SCRIPT_PATH = THEME_LIBRARY_PATH + 'scripts/';
 const JS_MODULES_GLOB = SCRIPT_PATH + 'modules/**/*.js';
 const BUILD_PATH = THEME_LIBRARY_PATH + 'build/';
@@ -52,13 +52,10 @@ gulp.task('less', () => gulp.src([LESS_PATH + 'style.less'])
     paths: [ path.join(__dirname, 'less', 'includes') ]
   }))
   .on('error', onError)
-  .pipe(gulp.dest(BUILD_PATH + 'css/'))
+  .pipe(gulp.dest(BUILD_PATH))
 );
 
-gulp.task('minify-css', ['less'], () => gulp.src([
-    `${BUILD_PATH}style.css`,
-    `${BUILD_PATH}style-base.css`
-  ])
+gulp.task('minify-css', ['less'], () => gulp.src([`${BUILD_PATH}style.css`])
   .pipe(cleanCSS())
   .pipe(gulp.dest(BUILD_PATH))
 );
