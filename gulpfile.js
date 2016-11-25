@@ -4,12 +4,13 @@ const plugins = require('gulp-load-plugins')();
 const eslint = require('gulp-eslint');
 const less = require('gulp-less');
 const browserify = require('browserify');
-const hbsfy = require("hbsfy");
+const hbsfy = require('hbsfy');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
+const browserSync = require('browser-sync');
 
 const THEME_LIBRARY_PATH = './library/';
 const LESS_PATH = THEME_LIBRARY_PATH + 'style/';
@@ -18,7 +19,6 @@ const JS_MODULES_GLOB = SCRIPT_PATH + 'modules/**/*.js';
 const BUILD_PATH = THEME_LIBRARY_PATH + 'build/';
 
 let watching = false;
-let dev = false;
 
 // Error Handler so watch doesn't kill the process on error.
 function onError(err) {
@@ -28,13 +28,6 @@ function onError(err) {
   } else {
     throw err;
   }
-}
-
-function conditionalRun(fn) {
-  if (!dev) {
-    return fn();
-  }
-  return () => {};
 }
 
 // Javascript Linting
@@ -84,22 +77,27 @@ gulp.task('uglify', ['bundle'], cb => {
   );
 });
 
-gulp.task('watch', function() {
-  watching = true;
-  gulp.watch(JS_MODULES_GLOB, ['lint', 'bundle']);
-  gulp.watch(LESS_PATH + '**/*.less', ['less']);
+gulp.task('browser-sync', () => {
+  browserSync({
+    server: {
+      baseDir: './'
+    }
+  });
 });
 
-gulp.task('dev', function() {
-  dev = true;
+gulp.task('watch', function() {
+  watching = true;
+  gulp.watch(JS_MODULES_GLOB, ['lint', 'bundle', browserSync.reload]);
+  gulp.watch(LESS_PATH + '**/*.less', ['less', browserSync.reload]);
+  gulp.watch('./index.html', [browserSync.reload]);
 });
 
 gulp.task('default', [
-    'dev',
     'less',
     'lint',
     'bundle',
-    'watch'
+    'watch',
+    'browser-sync'
   ]
 );
 
