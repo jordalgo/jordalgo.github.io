@@ -10,7 +10,6 @@
 <link rel="stylesheet prefetch" type="text/css" media="all" href="library/build/style.css" />
 <link rel="icon" href="library/images/logo-small.png">
 <link rel="prefetch" href="library/images/cover-image6.jpg">
-<script src="library/build/main.js" async></script>
 <!--<script>document.createElement( "picture" );</script>-->
 <!--<script src="library/scripts/vendor/picturefill.min.js"></script>-->
 </head>
@@ -165,6 +164,18 @@
     <a class="to-top" href="#jrbody">Back to Top</a>
 </section>    
     </div>
+    <script src="library/build/main.js"></script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(function(registration) {
+          console.log('Service Worker Registered');
+        });
 
+        navigator.serviceWorker.ready.then(function(registration) {
+          console.log('Service Worker Ready');
+        });
+      }
+    </script>
 </body>
 </html>
