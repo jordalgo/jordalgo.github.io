@@ -1,6 +1,6 @@
 {
   "name": "Jordan Rome",
-  "short_name": "JR",
+  "short_name": "JordanRome",
   "icons": [
     {
       "src": "favicon-32x32.png",
@@ -13,10 +13,6 @@
     }, {
       "src": "apple-touch-icon.png",
       "sizes": "120x120",
-      "type": "image/png"
-    }, {
-      "src": "mstile-150x150.png",
-      "sizes": "150x150",
       "type": "image/png"
     }
   ],
