@@ -15,8 +15,8 @@
       "sizes": "120x120",
       "type": "image/png"
     }, {
-      "src": "android-chrome-96x96.png",
-      "sizes": "96x96",
+      "src": "chrome-icon-big-150x150.png",
+      "sizes": "150x150",
       "type": "image/png"
     }
   ],
