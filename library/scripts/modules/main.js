@@ -3,6 +3,7 @@ let $ = require('jquery');
 import setEventListeners from './event-listeners';
 import adjustPaddingBottom from './adjust-padding-bottom';
 import loadWork from './load-work';
+import validateForm from './validate_form';
 
 $(document).ready(function() {
 
@@ -10,7 +11,8 @@ $(document).ready(function() {
     elWorkContainer = document.querySelector('.work-site-container'),
     elContact = document.querySelector('.contact');
 
-  setEventListeners();
+    setEventListeners();
+    validateForm();
 
   //tablet or bigger
   if (WINDOW_WIDTH > 750) {

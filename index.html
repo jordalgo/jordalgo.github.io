@@ -153,17 +153,17 @@
     <h3>Make Contact</h3>
     <div class="col left">
         <h4>Message Me</h4>
-        <form action="https://formspree.io/jordan@jordanrome.com" method="POST">
+        <form action="https://formspree.io/jordan@jordanrome.com" id="contact-form" method="POST">
         <!--<form name="phpformmailer" id="contact-form" action="/library/php/contact_process.php" method="post">-->
 
             <div class="inputbox">
-                <input size="30" name="name" class="input" placeholder="full name">
+                <input size="30" name="name" id="name-form" class="input" placeholder="full name">
             </div>
             <div class="inputbox">
-                <input size="30" name="email" class="input" placeholder="email*">
+                <input size="30" name="email" id="email-form" class="input" placeholder="email*">
             </div>
             <div class="inputbox large">
-                <textarea name="themessage" class="input" placeholder="have a project in mind? tell me about it" maxlength="200"></textarea>
+                <textarea name="themessage" id="message-form" class="input" placeholder="have a project in mind? tell me about it" maxlength="200"></textarea>
             </div>
             <input alt="Send" type="submit" value="send" id="send-button">
             <p class="note">*I promise no spam will come to you  (I doubt you'll get such an offer from the eels)</p>
