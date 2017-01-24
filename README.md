@@ -19,7 +19,7 @@ To tails the logs: `docker logs -f jordanromedotcom`
 
 ## Build
 
-`docker run -v $(pwd)/.:/var/www/html -d jordanromedotcom npm run build`
+`docker run --rm -v $(pwd)/.:/var/www/html jordanromedotcom npm run build`
 
 ## Clean Up
 
