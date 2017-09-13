@@ -4,10 +4,13 @@
 <title>HTML HPTO</title>
 <script>
   window.addEventListener('message', function(event) {
-    console.log('event', event.origin);
     // IMPORTANT: Check the origin of the data
-    if (event.origin === 'https://browse.app.spotify.com' || event.origin.includes('https://zlink.app.spotify.com')) {
+    if (event.origin === 'https://browse.app.spotify.com') {
+      if (!event.data.clickTrackingUrl) {
+        return;
+      }
       var container = document.getElementById('main');
+      console.log(`HTML HPTO setting click listener with clickTrackingUrl ${event.data.clickTrackingUrl}`);
       container.addEventListener('click', function () {
         // Fire click tracking pixel with supplied url
         var img = document.createElement('img');
@@ -17,7 +20,7 @@
         img.src = event.data.clickTrackingUrl;
 
         container.appendChild(img);
-        console.log('adding tracking pixel', event.data.clickTrackingUrl);
+        console.log(`HTML HPTO: adding tracking pixel ${event.data.clickTrackingUrl}`);
       });
     }
   });
