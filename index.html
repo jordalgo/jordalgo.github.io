@@ -34,6 +34,26 @@
 <link rel="prefetch" href="library/images/cover-image6.jpg">
 <!--<script>document.createElement( "picture" );</script>-->
 <!--<script src="library/scripts/vendor/picturefill.min.js"></script>-->
+<script>
+  window.addEventListener('message', function(event) {
+    console.log('event', event.origin);
+    // IMPORTANT: Check the origin of the data
+    if (event.origin === 'http://browse.app.spotify.com' || event.origin.includes('https://zlink.app.spotify.com')) {
+      var container = document.getElementById('main');
+    container.addEventListener('click', function () {
+      // Fire click tracking pixel with supplied url
+      var img = document.createElement('img');
+      img.style.display = 'none';
+      img.width = '1px';
+      img.height = '1px';
+      img.src = event.data.clickTrackingUrl;
+
+      container.appendChild(img);
+      console.log('adding tracking pixel', event.data.clickTrackingUrl);
+    });
+    }
+  });
+</script>
 </head>
 <body id="jrbody">
     <h1 class="assistive-text">Jordan Rome, Web Developer</h1>
