@@ -11,7 +11,7 @@ Feel free to use any code you find here. I'm always experimenting with workflows
 
 ## Development
 
-`docker run -name "jordanromedotcom" -p 80:8080 -v $(pwd)/.:/var/www/html -d jordanromedotcom`
+`docker run --name "jordanromedotcom" -p 80:8080 -v $(pwd)/.:/var/www/html -d jordanromedotcom`
 
 This runs a gulp watch task within the container and serves the files via browser-sync located at localhost:80 in your browser.
 
