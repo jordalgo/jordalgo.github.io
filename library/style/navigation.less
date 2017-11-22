@@ -10,13 +10,14 @@
 	z-index: 100;
 	font-size: 180%;
 	letter-spacing: 1px;
+	display: flex;
+	flex-wrap: wrap;
 	.shadow (0px, -3px, 4px, 1px, #666);
 
 	a,
 	.social-tab {
 		width: 25%;
 		display: block;
-		float: left;
 		height: 73px;
 		background-image: url("@{imageLocation}/bgs/white-dot-border.png");
 		background-repeat: repeat-y;
@@ -61,6 +62,7 @@
 			width: 240px;
 			height: 57px;
 			margin: 0 auto;
+			display: flex;
 
 			a {
 				width: 60px;
@@ -85,7 +87,11 @@
 	} //.social-tab
 
 	#mobile-social-button, 
-	#ms-container { display: none; }
+	#ms-container {
+		display: none;
+	}
+
+	#ms-container { width: 100%; }
 
 } //.access
 
