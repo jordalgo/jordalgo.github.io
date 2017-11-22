@@ -392,7 +392,7 @@ Screen Readers
 .access .mobile-social-tab .social-icons a {
   width: 60px;
   height: 57px;
-  background-image: url("../images/bgs/social-sprite-med.png");
+  background-image: url("../images/bgs/social-sprite-medium2.png");
   background-repeat: no-repeat;
   background-position: top left;
   text-indent: -9999px;
@@ -425,12 +425,12 @@ Screen Readers
 .access .mobile-social-tab .social-icons #twitter:hover {
   background-position: -120px -58px;
 }
-.access .social-tab .social-icons #googlepls,
-.access .mobile-social-tab .social-icons #googlepls {
+.access .social-tab .social-icons #github,
+.access .mobile-social-tab .social-icons #github {
   background-position: -180px top;
 }
-.access .social-tab .social-icons #googlepls:hover,
-.access .mobile-social-tab .social-icons #googlepls:hover {
+.access .social-tab .social-icons #github:hover,
+.access .mobile-social-tab .social-icons #github:hover {
   background-position: -180px -58px;
 }
 .access #mobile-social-button,
@@ -465,7 +465,7 @@ Large Screen Resolutions
   .access .social-tab .social-icons a {
     width: 65px;
     height: 64px;
-    background-image: url("../images/bgs/social-sprite-big.png");
+    background-image: url("../images/bgs/social-sprite-big2.png");
     padding-top: 0px;
   }
   .access .social-tab .social-icons #facebook:hover {
@@ -483,10 +483,10 @@ Large Screen Resolutions
   .access .social-tab .social-icons #twitter:hover {
     background-position: -130px -64px;
   }
-  .access .social-tab .social-icons #googlepls {
+  .access .social-tab .social-icons #github {
     background-position: -195px top;
   }
-  .access .social-tab .social-icons #googlepls:hover {
+  .access .social-tab .social-icons #github:hover {
     background-position: -195px -64px;
   }
 }
@@ -517,7 +517,7 @@ Tablets
     width: 48px;
     height: 48px;
     padding-top: 0px;
-    background-image: url("../images/bgs/social-sprite-small.png");
+    background-image: url("../images/bgs/social-sprite-small2.png");
   }
   .access .social-tab .social-icons #facebook:hover {
     background-position: left -48px;
@@ -534,10 +534,10 @@ Tablets
   .access .social-tab .social-icons #twitter:hover {
     background-position: -96px -48px;
   }
-  .access .social-tab .social-icons #googlepls {
+  .access .social-tab .social-icons #github {
     background-position: -144px top;
   }
-  .access .social-tab .social-icons #googlepls:hover {
+  .access .social-tab .social-icons #github:hover {
     background-position: -144px -48px;
   }
 }
