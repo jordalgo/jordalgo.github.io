@@ -1,4 +1,4 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
 const $COVER_IMAGE = $('.cover-image')
   , $ABOUT = $('.about-me')

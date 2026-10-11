@@ -3,24 +3,22 @@ jordalgo.github.io
 
 The website code for www.jordanrome.com - software developer
 
-Feel free to use any code you find here. I'm always experimenting with workflows, optimizations, css, etc... My development setup uses, npm, gulp, and docker.
+Feel free to use any code you find here. I'm always experimenting with workflows, optimizations, css, etc... The build uses npm, [esbuild](https://esbuild.github.io/), and [Less](https://lesscss.org/).
 
-## Setup (using Docker)
+Requires Node.js 20+.
 
-`docker build -t jordanromedotcom .`
+## Setup
+
+`npm install`
 
 ## Development
 
-`docker run --name "jordanromedotcom" -p 80:8080 -v $(pwd)/.:/var/www/html -d jordanromedotcom`
+`npm run dev`
 
-This runs a gulp watch task within the container and serves the files via browser-sync located at localhost:80 in your browser.
-
-To tails the logs: `docker logs -f jordanromedotcom`
+Watches `library/scripts` and `library/style`, rebuilds on change, and serves the site at http://localhost:8080.
 
 ## Build
 
-`docker run --rm -v $(pwd)/.:/var/www/html jordanromedotcom npm run build`
+`npm run build`
 
-## Clean Up
-
-Cleans up all docker containers: `docker rm -fv $(docker ps -aq)`
+Lints the JavaScript, then writes minified `library/build/main.js` and `library/build/style.css`. The build output is committed since the site is served by GitHub Pages.

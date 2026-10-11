@@ -3,8 +3,7 @@
 library/images/psds/
 #archive
 library/archive/
-library/scripts/es5/
-library/style/css/style.css.map
+library/build/*.map
 *.sublime-*
 node_modules/
 npm-debug.log
