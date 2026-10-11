@@ -1,8 +1,9 @@
-const CACHE_NAME = 'jordanromedotcom-v2';
+const CACHE_NAME = 'jordanromedotcom-v3';
 
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
+      // Bypass the HTTP cache so a new install never stores stale files.
       return cache.addAll([
         '/',
         '/index.html',
@@ -28,7 +29,7 @@ self.addEventListener('install', e => {
         '/library/images/bgs/social-sprite-small2.png',
         '/library/images/bgs/social-sprite-medium2.png',
         '/library/images/bgs/social-sprite-big2.png'
-      ])
+      ].map(url => new Request(url, { cache: 'reload' })))
       .then(() => self.skipWaiting());
     })
   )
