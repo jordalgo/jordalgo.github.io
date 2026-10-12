@@ -54,21 +54,13 @@
     </div>
 </nav>
 
-  <header class="full cover-image">
-    <img src="library/images/cover-image-mobile1.jpg" alt="Jordan Rome - Software Developer" id="mobile-cover">
-    <div class="tagline">
-        <div class="signature">Jordan Rome</div>
-        <h1><span class="orange">Software</span> Dev</h1>
-    </div>
-  </header>
-
     <div class="logo-container">
         <a id="logo" href="#jrbody" class="totop" title="Back to the top">JR Logo</a>
     </div>
 
     <div class="container about-me">
         <section id="about-me" class="content">
-    <h3>About Me</h3>
+    <h3 id="about-me-header">Jordan <span class="orange">Rome</span></h3>
     <div class="col left">
         <p class="intro">Greetings!  Here's a lil' something about me: I've been developing software for quite some time (over 20 years?!). My goal is to create reliable, reusable, and readable software. I love learning new technologies, languages, and just more about how computers work at every level.</p>
 
@@ -79,13 +71,17 @@
 
         <p>Currently, I am a Software Engineer at <a href="https://www.facebook.com/" title="Meta">Meta</a> working on <a href="https://github.com/bpftrace/bpftrace" title="bpftrace">bpftrace</a>.  I have worked as a developer at <a href="https://www.spotify.com" title="Spotify">Spotify</a>, <a href="http://www.cuny.edu" title="CUNY">The City University of New York</a>, UCLA, Sarah Lawrence College, and <a href="http://zeebox.com" title="Zeebox Website">Zeebox</a>.
 
-        <p>I also enjoy cooking, playing the guitar, horology, taking long walks in Peekskill with my wife and dog.</p>
+         <div>
+            <img src="library/images/cover-image6.jpg" alt="me" class="jordan-rome-img" />
+        </div>
+
+        <p>I also enjoy cooking, playing the guitar, horology, taking long walks in Kinderhook with my wife and two dogs.</p>
+
+
     </div>
     <div class="col right">
-        <span class="gray">grab</span>
-        <a href="library/docs/JordanRome.pdf" title="Jordan Rome Resume" class="resume">my resume &gt;&gt;</a>
+        <div class="signature">Software Engineer</div>
         <div class="sidebox">
-            <h4>Snapshot</h4>
             <p><strong>Where I work:</strong> Meta</p>
             <p><strong>Current Project:</strong> bpftrace</p>
             <p><strong>What I'm learning:</strong> AI and Kernel things</p>
@@ -94,6 +90,10 @@
         <div class="sidebox">
             <h4>Madskills</h4>
             <p>C/C++, eBPF, PHP, MySQL, Clojure, Rust, Javascript, Scripting, and many other things</p>
+        </div>
+         <div class="sidebox">
+            <span class="gray">my</span>
+            <a href="library/docs/JordanRome.pdf" title="Jordan Rome Resume" class="resume">resume &gt;&gt;</a>
         </div>
     </div>
     <a class="to-top" href="#jrbody">Back to Top</a>
@@ -173,7 +173,12 @@
     </div>
     <script src="library/build/main.js"></script>
     <script>
-      if('serviceWorker' in navigator) {
+      // The service worker serves cached files first, so keep it off in local dev.
+      if('serviceWorker' in navigator && location.hostname === 'localhost') {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          registrations.forEach(function(registration) { registration.unregister(); });
+        });
+      } else if('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js', { scope: '/' })
         .then(function(registration) {
           console.log('Service Worker Registered');
